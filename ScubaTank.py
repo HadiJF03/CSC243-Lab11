@@ -18,6 +18,13 @@ class ScubaTank:
         else: self.__bar-=amount 
     def __str__(self):
         return "Tank " + self.label + ": " + str(self.__bar) + " bar"
+    
+def transfer_air (source,target,amount ):
+    sourcebar =source.get_bar()
+    source.release(amount)
+    if sourcebar != source.get_bar():
+        target.fill(amount)
+#t1
 t = ScubaTank ("A" , 80)
 print (t)
 t.fill(40)
@@ -30,3 +37,12 @@ t.release(0)
 t.release(300)
 t.release(50)
 print (t)
+#t2
+src = ScubaTank (" A " , 150)
+dst = ScubaTank (" B " , 20)
+transfer_air( src , dst , 50)
+print ( src )
+print ( dst )
+transfer_air( src , dst , 120)
+print ( src . get_bar () )
+print ( dst . get_bar () )
